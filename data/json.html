@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Data from Google Sheets</title>
+</head>
+<body>
+
+<div id="result-container">
+  <!-- ข้อมูล JSON จะแสดงที่นี่ -->
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // URL ของ Google Apps Script Web App
+    const url = 'https://script.google.com/macros/s/AKfycbwVMsxvAQOblLZBRhaZI0noMTNVph5iJTUcwYr-fV_e2a4jTilW5gxgYDe8KsXjyUayHA/exec';
+
+    // ส่ง HTTP GET request
+    fetch(url)
+      .then(response => {
+        // ตรวจสอบสถานะของ response
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // แปลง JSON
+        return response.json();
+      })
+      .then(data => {
+        // ทำตามความต้องการของคุณ
+        console.log('ข้อมูล JSON:', data);
+
+        // ตัวอย่าง: แสดงผลข้อมูลใน HTML
+        const resultContainer = document.getElementById('result-container');
+        resultContainer.innerHTML = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  });
+</script>
+
+</body>
+</html>
