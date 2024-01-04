@@ -29,7 +29,7 @@
       var email = document.getElementById('email').value;
 
       // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
-      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      var url = 'https://script.google.com/macros/s/AKfycbxHnyJmZm3TJGlIysMgggmMaqVCQIJmiZHJqHAj_t5m8yZad0pF3hnHOD28XbtM8E3QEw/exec';
       
       google.script.run
         .withSuccessHandler(function() {
@@ -41,7 +41,7 @@
 
     function readData() {
       // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
-      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      var url = 'https://script.google.com/macros/s/AKfycbxHnyJmZm3TJGlIysMgggmMaqVCQIJmiZHJqHAj_t5m8yZad0pF3hnHOD28XbtM8E3QEw/exec';
       
       google.script.run.withSuccessHandler(function(data) {
         document.getElementById('result').innerHTML = data;
@@ -54,7 +54,7 @@
       var email = prompt('Enter new email:');
 
       // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
-      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      var url = 'https://script.google.com/macros/s/AKfycbxHnyJmZm3TJGlIysMgggmMaqVCQIJmiZHJqHAj_t5m8yZad0pF3hnHOD28XbtM8E3QEw/exec';
       
       google.script.run.updateData(id, name, email);
     }
@@ -63,7 +63,7 @@
       var id = prompt('Enter ID to delete:');
 
       // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
-      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      var url = 'https://script.google.com/macros/s/AKfycbxHnyJmZm3TJGlIysMgggmMaqVCQIJmiZHJqHAj_t5m8yZad0pF3hnHOD28XbtM8E3QEw/exec';
       
       google.script.run.deleteData(id);
     }
