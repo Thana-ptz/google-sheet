@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CRUD App</title>
+</head>
+
+<body>
+  <h1>CRUD App</h1>
+
+  <form id="crudForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    
+    <button type="button" onclick="createData()">Create</button>
+    <button type="button" onclick="readData()">Read</button>
+    <button type="button" onclick="updateData()">Update</button>
+    <button type="button" onclick="deleteData()">Delete</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function createData() {
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+
+      // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
+      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      
+      google.script.run
+        .withSuccessHandler(function() {
+          // ทำอะไรก็ตามหลังจากทำการสร้างข้อมูลสำเร็จ
+          console.log('Data created successfully.');
+        })
+        .createData(name, email);
+    }
+
+    function readData() {
+      // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
+      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      
+      google.script.run.withSuccessHandler(function(data) {
+        document.getElementById('result').innerHTML = data;
+      }).readData();
+    }
+
+    function updateData() {
+      var id = prompt('Enter ID to update:');
+      var name = prompt('Enter new name:');
+      var email = prompt('Enter new email:');
+
+      // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
+      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      
+      google.script.run.updateData(id, name, email);
+    }
+
+    function deleteData() {
+      var id = prompt('Enter ID to delete:');
+
+      // เปลี่ยน URL ด้วย URL ที่คุณคัดลอกจาก Deploy as web app
+      var url = 'https://script.google.com/macros/s/AKfycbz0k6_TGlUTdassLKaF_mxvMluPaTuPxyi1mzILqv3isr_obXYqDSSzripmtvkOMSHVrQ/exec';
+      
+      google.script.run.deleteData(id);
+    }
+  </script>
+
+  <script>
+    // Include the following Google API script in your HTML
+    var script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/api.js';
+    script.onload = function() {
+      google.script.run.withSuccessHandler(function(auth) {
+        google.script.run.createSpreadsheet();
+      }).withFailureHandler(function(error) {
+        console.error(error);
+      }).withUserObject(this).authorize();
+    };
+    document.head.appendChild(script);
+  </script>
+</body>
+
+</html>
